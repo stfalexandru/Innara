@@ -1,1 +1,364 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innara – Cerc de Mame</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fdfaf7;
+            --accent: #f9e4e0;
+            --gold: #e8c39e;
+            --deep: #5d4a6d;
+            --nature: #a8d5ba;
+            --glow: rgba(232, 195, 158, 0.4);
+        }
 
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--bg) 0%, #fff8f5 100%);
+            color: var(--deep);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        #particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        header {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(to bottom, rgba(249,228,224,0.4), rgba(253,250,247,0.8)),
+                        url('https://giliane-e-mansfeldtphotography.com/wp-content/uploads/2024/11/Elegant-Maternity-Portrait-in-Saint-Paul-Sunset-in-Minnesota-2.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 70%, var(--glow), transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(5rem, 14vw, 10rem);
+            color: white;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            margin-bottom: 0.1em;
+            animation: glowText 5s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            max-width: 900px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin: 0 1em 2.5em;
+        }
+
+        @keyframes glowText {
+            from { text-shadow: 0 0 15px var(--gold), 0 0 30px var(--gold); }
+            to   { text-shadow: 0 0 40px var(--gold), 0 0 70px var(--gold); }
+        }
+
+        .cta {
+            background: linear-gradient(45deg, #e8c39e, #f9e4e0);
+            color: #4a2f3f;
+            padding: 1.3em 3.5em;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 12px 35px var(--glow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; right: -50%; bottom: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+
+        .cta:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 25px 60px var(--glow);
+        }
+
+        .cta:hover::before { opacity: 1; }
+
+        section {
+            padding: 100px 6%;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0;
+            transform: translateY(70px);
+            transition: all 1.3s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 0.4em;
+            color: var(--deep);
+        }
+
+        h2 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3.2rem;
+            margin: 1.5em 0 0.8em;
+            color: var(--deep);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px; left: 50%; transform: translateX(-50%);
+            width: 140px; height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        h3 {
+            font-size: 2.2rem;
+            margin: 2em 0 1em;
+            color: var(--nature);
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.4em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .glass-card {
+            background: rgba(255,255,255,0.28);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 28px;
+            padding: 3em;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            margin: 2.5em auto;
+            max-width: 950px;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4em;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .about-img {
+            width: 340px;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 14px solid rgba(232,195,158,0.35);
+            box-shadow: 0 0 50px var(--glow);
+        }
+
+        ul {
+            list-style: none;
+            max-width: 700px;
+            margin: 1.5em auto;
+            font-size: 1.25rem;
+        }
+
+        ul li {
+            margin: 1em 0;
+            padding-left: 1.8em;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+            font-size: 1.4em;
+        }
+
+        .small-cta {
+            display: block;
+            margin: 3em auto 1em;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header { min-height: 80vh; }
+            .hero-title { font-size: 6rem; }
+            section { padding: 70px 5%; }
+            .about-container { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <header>
+        <div>
+            <h1 class="hero-title">Innara</h1>
+            <p class="hero-subtitle">Cerc de Mame – un spațiu viu, simbolic și blând pentru tine, viitoarea mamă</p>
+            <button class="cta">Hai în cerc</button>
+        </div>
+    </header>
+
+    <section id="mesaj">
+        <h2>Mesaj de Început</h2>
+        <div class="glass-card">
+            <p>Sunt însărcinată.<br>Și, dincolo de tot ce ține de corp, investigații, pregătiri și planuri, am început să observ felul în care viața se reorganizează în interiorul meu:</p>
+            <p>Lucruri care înainte păreau importante nu mai au aceeași greutate.<br>Apar emoții – pe unele le pot explica, pe altele nu.<br>O nevoie mai mare de liniște. De odihnă. De a mă asculta cu adevărat.</p>
+            <p>Apare dorința de a înțelege și de a închide lucruri din trecut. Amintiri din propria mea copilărie ies la suprafață – unele frumoase, altele dureroase. Simt nevoia de a face pace cu mine, pentru a putea deschide capitole noi, mai curate, mai autentice, mai în acord cu cine devin.</p>
+            <p>Există și dorința profundă de a-i oferi copilului meu tot ceea ce am eu mai bun. Și, uneori, tristețea atunci când emoțiile dificile preiau controlul și nu știu exact ce să fac cu ele.</p>
+            <p>Dar, dincolo de toate acestea, apare și ceva foarte important: încrederea că totul are un sens. Că această călătorie a maternității are sens și atunci când devine grea. Că nu este despre a fi perfectă, ci despre a deveni, pas cu pas, o mamă cât mai prezentă și mai adevărată pentru copilul meu.</p>
+            <p>Toate acestea m-au învățat că maternitatea nu este doar un eveniment exterior, ci un proces interior profund. Că identitatea mea ca femeie nu dispare, ci se rearanjează. Că este firesc să nu mai funcționeze vechile repere. Și că această stare de confuzie nu este o problemă, ci un prag de trecere către un nou mod de a trăi.</p>
+            <p>Am înțeles și că maternitatea activează o formă de inteligență care nu se bazează pe control sau logică, ci pe simțire, intuiție și corp. O inteligență care nu trebuie învățată, ci recunoscută și susținută.</p>
+            <p>În munca mea cu femeile, dar și în propriul meu proces, am văzut cât de mult contează să existe un spațiu în care să nu fie nevoie să știi dinainte ce urmează. Un spațiu în care să poți fi exact acolo unde ești, să pui întrebări, să rămâi în contact cu bebelușul tău, să observi ce se schimbă în tine și să lași răspunsurile să apară în ritmul lor.</p>
+            <p>De aceea am creat Cerc de Mame — un parcurs de grup de 3 întâlniri pentru femei însărcinate care simt că maternitatea este mai mult decât o schimbare de rol și care vor să fie prezente, conștient, în acest proces.</p>
+            <p>Lucrăm cu un instrument simbolic, Referențialul Arhetipurilor Personale, care te ajută să-ți înțelegi mai bine resursele, momentele de tranziție și ceea ce se transformă în tine. Nu pentru a primi răspunsuri „corecte”, ci pentru a-ți clarifica propriile trăiri, într-un grup restrâns, sigur și conținător.</p>
+            <p>Începem pe 3 februarie. Sunt doar 10 locuri în total și este singura ediție pe care o voi ține anul acesta.</p>
+            <p>Am lăsat descrierea programului mai jos. Acolo vei găsi toate detaliile.<br>Dacă simți chemarea, hai și tu cu noi.</p>
+        </div>
+    </section>
+
+    <section id="ce-este">
+        <h2>Cerc de Mame – Seri de conectare pentru femei însărcinate</h2>
+        <h3>La ce să te aștepți?</h3>
+        <div class="glass-card">
+            <p>Cerc de Mame este un spațiu creat pentru femei însărcinate care simt că maternitatea este mai mult decât un proces firesc al vieții. Este un spațiu pentru femeile care descoperă că această perioadă le atinge mai profund decât se așteptau și care simt nevoia să o trăiască cu mai multă prezență și sens.</p>
+            <p>Zilele trec diferit atunci când ești însărcinată. Uneori se simt ca un ceai cald, alteori ca o furtună în suflet. Sunt zile în care pare că trăiești toate cele patru anotimpuri într-o singură zi. Bucurie și vulnerabilitate, liniște și agitație interioară sau anxietate pot apărea aproape concomitent.</p>
+            <p>Am creat acest cerc din întâlnirea dintre munca mea ca psihoterapeut și propria mea experiență de femeie însărcinată. Din ceea ce trăiesc în corp, în emoții și în gânduri. Din întrebările care apar și din liniștea pe care o caut.</p>
+            <p>Cerc de Mame nu este un curs de parenting și nu oferă rețete.<br>Este un spațiu cald și conținător, în care maternitatea este privită ca un proces viu, care se desfășoară în ritmul fiecărei femei.</p>
+
+            <h3>Cum lucrăm</h3>
+            <p>Lucrăm blând și atent, cu respect pentru ritmul tău.</p>
+            <p>Folosim instrumente din psihoterapia Gestalt, care ne ajută să rămânem în contact cu ceea ce este prezent în corp: emoții, senzații, gânduri care apar, întrebări care nu au încă răspuns. Nu analizăm și nu grăbim nimic. Facem loc pentru ceea ce este.</p>
+            <p>În același timp, lucrăm cu un instrument simbolic de autocunoaștere – Referențialul Arhetipurilor Personale. Acesta oferă o hartă a resurselor tale personale, a pragurilor de tranziție și a valorilor și moștenirilor simbolice pe care le porți și le transmiți mai departe.</p>
+            <p>Harta este construită pornind de la data nașterii și folosește imagini simbolice – cele 22 de arcane majore din Tarotul de Marsilia – ca oglinzi interioare. Nu pentru a face predicții, ci pentru a te ajuta să îți descoperi propriul sens și să te pui în contact cu cine ești tu cu adevărat.</p>
+            <p>Lucrăm într-un grup mic, sigur, în care fiecare femeie este liberă să fie exact așa cum este.</p>
+
+            <h3>Structura cercului</h3>
+            <p>Ne întâlnim de 3 ori, la un interval de două săptămâni. Fiecare întâlnire durează aproximativ 3 ore.</p>
+            <ul>
+                <li><strong>Întâlnirea 1 – Resursele tale</strong><br>Care sunt darurile tale înnăscute pentru a deveni mamă? Ce știi și poți să faci în cel mai ușor și natural mod, cu bucurie?</li>
+                <li><strong>Întâlnirea 2 – Pragurile de trecere</strong><br>Care sunt tiparele recurente din viața ta și ce mesaj au ele pentru tine? Ce te-ar putea ajuta acum să te eliberezi de aceste tipare?</li>
+                <li><strong>Întâlnirea 3 – Valori și moștenire</strong><br>Care sunt valorile care te ghidează în viață și pe care dorești să i le transmiți copilașului tău? Ce fel de moștenire îți dorești să lași în urma ta?</li>
+            </ul>
+
+            <h3>Detalii practice</h3>
+            <ul>
+                <li><strong>Loc:</strong> Centrul PsihArt, București</li>
+                <li><strong>Zi și oră:</strong> marți, 18:00 – 21:00</li>
+                <li><strong>Date:</strong> 3.02, 17.02, 3.03</li>
+                <li><strong>Grup:</strong> 6–10 femei însărcinate, aflate în orice etapă a sarcinii</li>
+                <li><strong>Contribuție:</strong> 1.200 lei (pentru toate cele 3 întâlniri)</li>
+                <li><strong>Avans la înscriere:</strong> 25% (300 lei) – pentru rezervarea locului</li>
+            </ul>
+
+            <div class="small-cta">
+                <button class="cta" style="font-size:1.3rem; padding:1em 2.5em;">Rezervă-ți locul acum</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-me">
+        <h2>Despre Mine</h2>
+        <div class="about-container glass-card">
+            <img class="about-img" src="https://photographyreference.com/wp-content/uploads/2024/10/maternity-photography-country-girl-at-sunset.jpg" alt="Elena însărcinată în natură">
+            <div>
+                <p>Sunt psihoterapeut cu formare în psihoterapia Gestalt, femeie, soție și viitoare mamă. Creez acest cerc din respect pentru complexitatea acestei etape de viață și din dorința de a oferi femeilor un spațiu în care maternitatea să poată fi trăită cu mai multă blândețe, sens și încredere.</p>
+                <p>Dacă simți că acest cerc este pentru tine, îmi poți scrie un email la<br><strong>inceu.elena@gmail.com</strong>.</p>
+                <p>Îți voi răspunde personal cu toate detaliile legate de participare și pașii următori.</p>
+                <p>Locurile sunt limitate, iar participarea este confirmată prin plata avansului de 25% care îți rezervă locul în cerc.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll reveal
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.12 });
+
+        sections.forEach(sec => observer.observe(sec));
+
+        // Particule
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const particlesArray = [];
+        for (let i = 0; i < 70; i++) {
+            particlesArray.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 3 + 1,
+                speedX: Math.random() * 0.6 - 0.3,
+                speedY: Math.random() * 0.6 - 0.3,
+                color: `hsla(${Math.random()*50 + 20}, 70%, 85%, ${Math.random()*0.5 + 0.2})`
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    </script>
+</body>
+</html>
