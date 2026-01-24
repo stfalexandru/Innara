@@ -9,9 +9,9 @@
         :root {
             --bg: #fdfaf7;
             --text: #000000;
-            --h2-color: #2e7d32; /* verde închis */
-            --glow: rgba(46, 125, 50, 0.25);
-            --glow-gold: rgba(232, 195, 158, 0.3);
+            --h2-color: #2e7d32;
+            --glow: rgba(46, 125, 50, 0.3);
+            --glow-gold: rgba(232, 195, 158, 0.35);
         }
 
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -19,11 +19,11 @@
             font-family: 'Playfair Display', serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
-            font-size: clamp(1rem, 3vw, 1.1rem);
+            line-height: 1.65;
+            font-size: clamp(1rem, 3vw, 1.05rem);
         }
 
-        #particles { position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: 0.35; }
+        #particles { position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: 0.4; }
 
         header {
             min-height: 70vh;
@@ -49,105 +49,118 @@
             font-family: 'Great Vibes', cursive;
             font-size: clamp(4.5rem, 13vw, 8rem);
             color: var(--text);
-            text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+            text-shadow: 0 3px 15px rgba(0,0,0,0.3);
             margin-bottom: 0.4em;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.4rem, 4.5vw, 2rem);
+            font-size: clamp(1.3rem, 4vw, 1.9rem);
             color: var(--text);
             max-width: 800px;
             margin: 0 1.5rem 1.8rem;
         }
 
-        section {
-            padding: 3.5rem 1.2rem 2.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 6vw, 2.8rem);
-            color: var(--h2-color);
+        .intro-section {
             text-align: center;
-            margin: 2.5rem 0 1.2rem;
-            position: relative;
+            padding: 3rem 1.5rem 2rem;
+            background: rgba(255,255,255,0.6);
+            margin: 0 auto;
+            max-width: 1000px;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, transparent, var(--h2-color), transparent);
+        .intro-title {
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            color: var(--text);
+            margin-bottom: 0.8rem;
+        }
+
+        .intro-subtitle {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .info-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
+        .badge {
+            background: rgba(46,125,50,0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            border: 1px solid var(--h2-color);
+        }
+
+        .cta-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #2e7d32, #4caf50);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(46,125,50,0.4);
+            transition: all 0.4s;
+            margin: 1.5rem 0;
+        }
+
+        .cta-link:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(46,125,50,0.6);
         }
 
         .glass-card {
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
             border: 1px solid rgba(46,125,50,0.25);
             border-radius: 24px;
-            padding: 2rem 1.8rem;
-            margin: 1.8rem 0;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.12), inset 0 0 15px rgba(46,125,50,0.1);
+            padding: 2.2rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15), inset 0 0 20px rgba(46,125,50,0.1);
             transition: all 0.5s ease;
         }
 
         .glass-card:hover {
-            transform: translateY(-10px) scale(1.015);
-            box-shadow: 0 20px 60px var(--glow), 0 0 35px var(--glow-gold);
-            border: 1px solid rgba(46,125,50,0.45);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 70px var(--glow), 0 0 40px var(--glow-gold);
+            border: 1px solid rgba(46,125,50,0.5);
         }
 
-        p, li {
-            color: var(--text);
-            margin-bottom: 1.1rem;
-            font-size: clamp(1rem, 2.8vw, 1.05rem);
+        h2 {
+            color: var(--h2-color);
+            font-size: clamp(2.2rem, 6vw, 2.8rem);
+            text-align: center;
+            margin: 2.5rem 0 1.2rem;
         }
 
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
+        p, li { color: var(--text); margin-bottom: 1rem; font-size: clamp(1rem, 2.8vw, 1.05rem); }
 
-        ul li {
-            margin: 0.9rem 0;
-            padding-left: 2.2rem;
-            position: relative;
-        }
+        ul { list-style: none; padding-left: 0; }
 
-        ul li::before {
-            content: '🌿';
-            position: absolute;
-            left: 0;
-            font-size: 1.5em;
-        }
+        ul li { margin: 0.8rem 0; padding-left: 2.2rem; position: relative; }
+
+        ul li::before { content: '🌿'; position: absolute; left: 0; font-size: 1.4em; }
 
         .about-img {
-            width: 260px;
-            height: 260px;
+            width: 240px;
+            height: 240px;
             object-fit: cover;
             border-radius: 50%;
-            border: 10px solid rgba(46,125,50,0.15);
+            border: 10px solid rgba(46,125,50,0.2);
             box-shadow: 0 0 35px var(--glow);
             margin: 2rem auto;
             display: block;
         }
 
         @media (min-width: 768px) {
-            section { padding: 5rem 2.5rem 3.5rem; }
-            .glass-card { padding: 3rem 3.5rem; }
-            .about-img { width: 320px; height: 320px; }
-        }
-
-        @media (min-width: 1024px) {
-            section { max-width: 1100px; }
-            .glass-card { padding: 3.5rem 4.5rem; }
+            section { padding: 5rem 3rem; }
+            .glass-card { padding: 3rem 4rem; }
+            .about-img { width: 300px; height: 300px; }
         }
     </style>
 </head>
@@ -160,11 +173,24 @@
         <p class="hero-subtitle">Cerc de Mame – un spațiu pentru tine și transformarea ta interioară</p>
     </header>
 
+    <div class="intro-section">
+        <h1 class="intro-title">Cerc de Mame</h1>
+        <p class="intro-subtitle">Seri de conectare pentru femei însărcinate</p>
+        <p>Un parcurs de grup de 3 întâlniri, creat pentru femeile însărcinate care simt că maternitatea este mai mult decât o schimbare de rol.</p>
+        <div class="info-badges">
+            <span class="badge">📅 3 întâlniri</span>
+            <span class="badge">📍 București</span>
+            <span class="badge">👩‍👩‍👧 6–10 femei</span>
+            <span class="badge">💛 februarie 2026</span>
+        </div>
+        <a href="mailto:inceu.elena@gmail.com?subject=Înscriere%20Cerc%20de%20Mame&body=Bună%20Elena,%0A%0AVreau%20să%20mă%20înscriu%20la%20Cerc%20de%20Mame.%20Te%20rog%20trimite-mi%20detaliile%20și%20pașii%20următori.%0A%0ANume:%20%0ASarcină%20(săptămâna):%20%0ATelefon:%20" class="cta-link">👉 Înscrie-te acum</a>
+    </div>
+
     <section id="mesaj">
         <h2>Mesaj de început</h2>
         <div class="glass-card">
-            <p>Sunt însărcinată.\<br>Și, dincolo de tot ce ține de corp, investigații, pregătiri și planuri, am început să observ felul în care viața se reorganizează în interiorul meu:</p>
-            <p>Lucruri care înainte păreau importante nu mai au aceeași greutate.\<br>Apar emoții – pe unele le pot explica, pe altele nu.\<br>O nevoie mai mare de liniște.\<br>De odihnă.\<br>De a mă asculta cu adevărat.</p>
+            <p>Sunt însărcinată.<br>Și, dincolo de tot ce ține de corp, investigații, pregătiri și planuri, am început să observ felul în care viața se reorganizează în interiorul meu:</p>
+            <p>Lucruri care înainte păreau importante nu mai au aceeași greutate.<br>Apar emoții – pe unele le pot explica, pe altele nu.<br>O nevoie mai mare de liniște.<br>De odihnă.<br>De a mă asculta cu adevărat.</p>
             <p>Apare dorința de a înțelege și de a închide lucruri din trecut. Amintiri din propria mea copilărie ies la suprafață – unele frumoase, altele dureroase. Simt nevoia de a face pace cu mine, pentru a putea deschide capitole noi, mai curate, mai autentice, mai în acord cu cine devin.</p>
             <p>Există și dorința profundă de a-i oferi copilului meu tot ceea ce am eu mai bun. Și, uneori, tristețea atunci când emoțiile dificile preiau controlul și nu știu exact ce să fac cu ele.</p>
             <p>Dar, dincolo de toate acestea, apare și ceva foarte important: încrederea că totul are un sens. Că această călătorie a maternității are sens și atunci când devine grea. Că nu este despre a fi perfectă, ci despre a deveni, pas cu pas, o mamă cât mai prezentă și mai adevărată pentru copilul meu.</p>
@@ -173,13 +199,13 @@
             <p>În munca mea cu femeile, dar și în propriul meu proces, am văzut cât de mult contează să existe un spațiu în care să nu fie nevoie să știi dinainte ce urmează. Un spațiu în care să poți fi exact acolo unde ești, să pui întrebări, să rămâi în contact cu bebelușul tău, să observi ce se schimbă în tine și să lași răspunsurile să apară în ritmul lor.</p>
             <p>De aceea am creat Cerc de Mame — un parcurs de grup de 3 întâlniri pentru femei însărcinate care simt că maternitatea este mai mult decât o schimbare de rol și care vor să fie prezente, conștient, în acest proces.</p>
             <p>Lucrăm cu un instrument simbolic, Referențialul Arhetipurilor Personale, care te ajută să-ți înțelegi mai bine resursele, momentele de tranziție și ceea ce se transformă în tine. Nu pentru a primi răspunsuri „corecte”, ci pentru a-ți clarifica propriile trăiri, într-un grup restrâns, sigur și conținător.</p>
-            <p>Începem pe 3 februarie. Sunt doar 10 locuri în total si este singura ediție pe care o voi ține anul acesta.</p>
-            <p>Am lăsat descrierea programului mai jos.\<br>Acolo vei gasi toate detaliile.\<br>Dacă simți chemarea, hai și tu cu noi.</p>
+            <p>Începem pe 10 februarie. Sunt doar 10 locuri în total si este singura ediție pe care o voi ține anul acesta.</p>
+            <p>Am lăsat descrierea programului mai jos.<br>Acolo vei gasi toate detaliile.<br>Dacă simți chemarea, hai și tu cu noi.</p>
         </div>
     </section>
 
     <section id="program">
-        <h2>Cerc de Mame – Seri de conectare pentru femei însărcinate (la ce sa te astepti?)</h2>
+        <h2>La ce să te aștepți?</h2>
         <div class="glass-card">
             <p>Cerc de Mame este un spațiu creat pentru femei însărcinate care simt că maternitatea este mai mult decât un proces firesc al vieții. Este un spațiu pentru femeile care descoperă că această perioadă le atinge mai profund decât se așteptau și care simt nevoia să o trăiască cu mai multă prezență și sens.</p>
             <p>Zilele trec diferit atunci când ești însărcinată. Uneori se simt ca un ceai cald, alteori ca o furtună în suflet. Sunt zile în care pare că trăiești toate cele patru anotimpuri într-o singură zi. Bucurie și vulnerabilitate, liniște și agitație interioară sau anxietate pot apărea aproape concomitent.</p>
@@ -203,13 +229,13 @@
             <h3>Detalii practice</h3>
             <p>📍 Loc: Centrul PsihArt, București</p>
             <p>🕕 Zi și oră: marți, 18:00 – 21:00</p>
-            <p>📅 Date: 3.02, 17.02, 3.03</p>
+            <p>📅 Date: 10.02, 17.02, 24.02</p>
             <p>👩‍👩‍👧 Grup: 6–10 femei însărcinate, aflate în orice etapă a sarcinii</p>
             <p>💰 Contribuție: 1.200 lei (pentru toate cele 3 întâlniri)</p>
             <p>🔒 Avans la înscriere: 25% (300 lei) – pentru rezervarea locului</p>
 
             <h2>Despre mine</h2>
-            <img class="about-img" src="https://images.unsplash.com/photo-1629909613654-28e8b0d9c55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Siluetă femeie însărcinată în natură">
+            <img class="about-img" src="https://p3.hippopx.com/preview/125/653/white-votive-candles-lit-candles-warm-glow-dark-setting-serene-atmosphere-candlelight-close-up-view-red-candle-holders-soft-lighting-peaceful-ambiance.jpg" alt="Lumânare caldă, lumină prietenoasă">
             <p>Sunt psihoterapeut cu formare în psihoterapia Gestalt, femeie, soție și viitoare mamă. Creez acest cerc din respect pentru complexitatea acestei etape de viață și din dorința de a oferi femeilor un spațiu în care maternitatea să poată fi trăită cu mai multă blândețe, sens și încredere.</p>
             <p>Dacă simți că acest cerc este pentru tine, îmi poți scrie un email la<br>inceu.elena@gmail.com.</p>
             <p>Îți voi răspunde personal cu toate detaliile legate de participare și pașii următori.</p>
@@ -218,25 +244,21 @@
     </section>
 
     <script>
-        // particule verzi subtile
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
         const particlesArray = [];
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < 50; i++) {
             particlesArray.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 size: Math.random() * 3 + 1,
-                speedX: Math.random() * 0.5 - 0.25,
-                speedY: Math.random() * 0.5 - 0.25,
-                color: `hsla(120, 50%, 60%, ${Math.random()*0.35 + 0.15})`
+                speedX: Math.random() * 0.4 - 0.2,
+                speedY: Math.random() * 0.4 - 0.2,
+                color: `hsla(120, 50%, 60%, ${Math.random()*0.3 + 0.1})`
             });
         }
 
