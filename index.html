@@ -290,7 +290,8 @@
         animateParticles();
     </script>
     <div class="early-banner">
-    <p>Early bird – 960 lei. Preț valabil până pe 4 februarie.</p>
+    <p>Early bird – 960 lei</p>
+    <span>Preț valabil până pe 4 februarie</span>
 </div>
 
 <style>
@@ -299,27 +300,73 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: rgba(46, 125, 50, 0.92); /* verde închis semi-transparent */
-        color: #ffffff;
+        background: #a8d5ba; /* verde deschis, fresh și matern */
+        color: #000000;
         text-align: center;
-        padding: 0.9rem 1rem;
-        font-size: clamp(1rem, 3.5vw, 1.15rem);
+        padding: 1rem 1.2rem;
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
         font-weight: 600;
-        box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+        box-shadow: 0 -6px 20px rgba(0,0,0,0.15);
         z-index: 9999;
-        backdrop-filter: blur(6px);
-        border-top: 2px solid rgba(232, 195, 158, 0.6); /* linie aurie sus */
+        overflow: hidden;
+        border-top: 3px solid #2e7d32;
     }
 
     .early-banner p {
         margin: 0;
-        letter-spacing: 0.5px;
+        font-family: 'Great Vibes', cursive; /* scris de mână elegant */
+        font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+        letter-spacing: 1px;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .early-banner span {
+        display: block;
+        margin-top: 0.3rem;
+        font-size: clamp(1rem, 3.5vw, 1.15rem);
+        opacity: 0.95;
+    }
+
+    /* Efect neon/cometă care se mișcă în jurul marginilor */
+    .early-banner::before,
+    .early-banner::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    .early-banner::before {
+        border: 3px solid transparent;
+        border-image: linear-gradient(45deg, #2e7d32, #4caf50, #a8d5ba, #4caf50, #2e7d32) 1;
+        animation: neon-border 5s linear infinite;
+    }
+
+    .early-banner::after {
+        inset: 4px;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 15px #4caf50, 0 0 30px #2e7d32;
+        opacity: 0.7;
+        animation: pulse-glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes neon-border {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 200% 200%; }
+    }
+
+    @keyframes pulse-glow {
+        0% { opacity: 0.5; box-shadow: 0 0 10px #4caf50; }
+        100% { opacity: 0.9; box-shadow: 0 0 30px #4caf50, 0 0 50px #2e7d32; }
     }
 
     @media (max-width: 480px) {
         .early-banner {
-            padding: 0.7rem 0.8rem;
-            font-size: clamp(0.95rem, 4vw, 1.05rem);
+            padding: 0.8rem 0.8rem;
+        }
+        .early-banner p {
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
         }
     }
 </style>
