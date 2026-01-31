@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -300,65 +301,86 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: #a8d5ba; /* verde deschis, fresh și matern */
+        background: #a8d5ba; /* verde deschis */
         color: #000000;
         text-align: center;
         padding: 1rem 1.2rem;
         font-size: clamp(1.1rem, 4vw, 1.3rem);
         font-weight: 600;
-        box-shadow: 0 -6px 20px rgba(0,0,0,0.15);
+        box-shadow: 0 -8px 25px rgba(0,0,0,0.15);
         z-index: 9999;
         overflow: hidden;
-        border-top: 3px solid #2e7d32;
+        border-radius: 0; /* fără margini rotunjite ca să arate cometă mai bine */
     }
 
     .early-banner p {
         margin: 0;
-        font-family: 'Great Vibes', cursive; /* scris de mână elegant */
-        font-size: clamp(1.6rem, 5.5vw, 2.2rem);
-        letter-spacing: 1px;
-        text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        font-family: 'Great Vibes', cursive;
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        letter-spacing: 1.2px;
+        text-shadow: 0 1px 5px rgba(0,0,0,0.2);
     }
 
     .early-banner span {
         display: block;
-        margin-top: 0.3rem;
-        font-size: clamp(1rem, 3.5vw, 1.15rem);
+        margin-top: 0.4rem;
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
         opacity: 0.95;
     }
 
-    /* Efect neon/cometă care se mișcă în jurul marginilor */
+    /* Efect cometă aurie care se rotește în jurul banner-ului */
     .early-banner::before,
     .early-banner::after {
         content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
+        position: left;
+        inset: -10px; /* extins în afară pentru halo */
         pointer-events: none;
+        border-radius: inherit;
+        opacity: 0.8;
+        animation: comet-rotate 8s linear infinite;
     }
 
     .early-banner::before {
-        border: 3px solid transparent;
-        border-image: linear-gradient(45deg, #2e7d32, #4caf50, #a8d5ba, #4caf50, #2e7d32) 1;
-        animation: neon-border 5s linear infinite;
+        background: conic-gradient(
+            transparent 0deg,
+            transparent 120deg,
+            #e6e4da 140deg,  /* auriu */
+            #e6e4da 160deg,
+            #e6e4da 180deg,
+            transparent 100deg,
+            transparent 360deg
+        );
+        filter: blur(12px);
+        animation-duration: 10s;
     }
 
     .early-banner::after {
-        inset: 4px;
-        border: 2px solid #ffffff;
-        box-shadow: 0 0 15px #4caf50, 0 0 30px #2e7d32;
-        opacity: 0.7;
-        animation: pulse-glow 3s ease-in-out infinite alternate;
+        background: conic-gradient(
+            transparent 0deg,
+            #ffffff 30deg,
+            #ffd700 60deg,
+            transparent 0deg,
+            transparent 360deg
+        );
+        filter: blur(20px);
+        opacity: 0.6;
+        animation-duration: 12s;
+        animation-direction: reverse;
     }
 
-    @keyframes neon-border {
-        0% { background-position: 0% 0%; }
-        100% { background-position: 200% 200%; }
+    @keyframes comet-rotate {
+        0% { transform: rotate(90deg); }
+        50% { transform: rotate(360deg); }
     }
 
-    @keyframes pulse-glow {
-        0% { opacity: 0.5; box-shadow: 0 0 10px #4caf50; }
-        100% { opacity: 0.9; box-shadow: 0 0 30px #4caf50, 0 0 50px #2e7d32; }
+    /* Puls auriu subtil în mijloc */
+    .early-banner {
+        animation: pulse-subtil 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-subtil {
+        0% { box-shadow: 0 -8px 25px rgba(0,0,0,0.15); }
+        50% { box-shadow: 0 -8px 35px rgba(255,215,0,0.4); }
     }
 
     @media (max-width: 480px) {
@@ -366,7 +388,7 @@
             padding: 0.8rem 0.8rem;
         }
         .early-banner p {
-            font-size: clamp(1.4rem, 5vw, 1.8rem);
+            font-size: clamp(1.5rem, 5.5vw, 2rem);
         }
     }
 </style>
