@@ -289,5 +289,39 @@
         }
         animateParticles();
     </script>
+    <div class="early-banner">
+    <p>Early bird – 960 lei. Preț valabil până pe 4 februarie.</p>
+</div>
+
+<style>
+    .early-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(46, 125, 50, 0.92); /* verde închis semi-transparent */
+        color: #ffffff;
+        text-align: center;
+        padding: 0.9rem 1rem;
+        font-size: clamp(1rem, 3.5vw, 1.15rem);
+        font-weight: 600;
+        box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+        z-index: 9999;
+        backdrop-filter: blur(6px);
+        border-top: 2px solid rgba(232, 195, 158, 0.6); /* linie aurie sus */
+    }
+
+    .early-banner p {
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+        .early-banner {
+            padding: 0.7rem 0.8rem;
+            font-size: clamp(0.95rem, 4vw, 1.05rem);
+        }
+    }
+</style>
 </body>
 </html>
